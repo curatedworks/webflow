@@ -1,5 +1,5 @@
 $(function () {
-  // add utm_source param
+  // add utm_source param 2
   const urlParams = new URLSearchParams(window.location.search.toLowerCase());
 
   let _utm_source = '';
