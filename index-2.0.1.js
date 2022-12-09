@@ -332,6 +332,21 @@ $(function () {
       }
     });
   }
+  
+  if ($('#download-2023').length) {
+    $('#download-2023 .btn').on('click', function () {
+      $(`#download-form2`).submit();
+    });
+
+    $('#download-2023').on('submit', function () {
+      if ($('#download-2023').is(':invalid')) {
+        return;
+      } else {
+        let url = `https://drive.google.com/file/d/14V_hma74hpvzmOQMd557egBVryVYAY40/view?usp=sharing`;
+        window.open(url);
+      }
+    });
+  }
 
   // Join Team Agenct Selected
   $('#email-form--agency .btn').on('click', function () {
