@@ -100,28 +100,6 @@ $(function () {
     }, 20000);
   }
 
-  // modal window changed
-  /*if (!localStorage.getItem('modalCallWasShown')) {
-    setTimeout(() => {
-      $('.open-modal-call').click();
-      localStorage.setItem('modalCallWasShown', true);
-    }, 20000);
-  }
-
-  if (!localStorage.getItem('modalWasShown') && localStorage.getItem('modalCallWasShown')) {
-    setTimeout(() => {
-      $('.open-modal').click();
-      localStorage.setItem('modalWasShown', true);
-    }, 60000);
-  }
-
-  if (!localStorage.getItem('modalMerchWasShown') && localStorage.getItem('modalCallWasShown')) {
-    setTimeout(() => {
-      $('.open-modal-merch').click();
-      localStorage.setItem('modalMerchWasShown', true);
-    }, 20000);
-  }*/
-
   // constants
   const orange = '#9B421C';
   const purple = '#f1eafb';
@@ -367,25 +345,6 @@ $(function () {
       window.open(url);
     }
   });
-  // End Join Team Agenct Selected
-
-  //   function downloadFile() {
-  //     const url =
-  //       'https://drive.google.com/file/d/1LGo1bxkjBB811iIvQr6V9YqHNkyp2yjL/view?usp=sharing';
-  //     fetch(url)
-  //       .then((resp) => resp.blob())
-  //       .then((blob) => {
-  //         const url = window.URL.createObjectURL(blob);
-  //         const a = document.createElement('a');
-  //         a.style.display = 'none';
-  //         a.href = url;
-  //         a.download = 'Curated Marketing List 2021';
-  //         document.body.appendChild(a);
-  //         a.click();
-  //         window.URL.revokeObjectURL(url);
-  //       })
-  //       .catch(() => console.log('file download error'));
-  //   }
 
   // about page
   $('.a-cta .btn').on('click', () => {
