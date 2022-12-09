@@ -335,7 +335,7 @@ $(function () {
   
   if ($('#download-2023').length) {
     $('#download-2023 .btn').on('click', function () {
-      $(`#download-form2`).submit();
+      $(`#download-2023`).submit();
     });
 
     $('#download-2023').on('submit', function () {
