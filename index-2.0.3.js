@@ -325,6 +325,25 @@ $(function () {
       }
     });
   }
+  
+// CTA Footer
+if ($('#cta-footer').length) {
+  $('#cta-footer .cta-footer__bnt').on('click', function () {
+    $(`#cta-footer`).submit();
+  });
+
+  $('#cta-footer').on('submit', function () {
+    if ($('#cta-footer').is(':invalid')) {
+      return;
+    } else if ($('input[name=business]:checked').val() == "Brand")  {
+      let url = `https://projects.breef.com/registration`;
+      window.open(url);
+    } else {
+      let url = `https://projects.breef.com/registration?type=agency`;
+      window.open(url);
+    }
+  });
+}
 
   // Join Team Agenct Selected
   $('#email-form--agency .btn').on('click', function () {
