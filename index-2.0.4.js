@@ -186,7 +186,8 @@ $(function () {
     if ($(`#${id}`)[0].checkValidity()) {
       const email = $(`#${id} input[type=email]`).val();
       const name = $(`#${id} input[type=text]`) ? $(`#${id} input[type=text]`).val() : '';
-      let url = `https://breef-merch.myshopify.com/58594459809/checkouts/674718e7cc9e8f24d3f9a337ac2274f6?channel=buy_button&payment=shop_pay`;
+      //let url = `https://breef-merch.myshopify.com/58594459809/checkouts/674718e7cc9e8f24d3f9a337ac2274f6?channel=buy_button&payment=shop_pay`;
+      let url = `https://breef-merch.myshopify.com/58594459809/checkouts/b86213229c0df3f31c26e60c1d6bc901?skip_shopify_pay=true`;
       if (name) {
         url += `&name=${name}`;
       }
