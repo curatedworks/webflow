@@ -1,4 +1,6 @@
-// BREEFING-ROOM // Filter Brand articles for agencies and vice versa
+/////   START BREEFING-ROOM    /////
+
+// Filter Brand articles for agencies and vice versa
 document.addEventListener('DOMContentLoaded', async function () {
   function doFilter(byFilterSelector) {
     const userType = localStorage.getItem('clientType')
@@ -50,6 +52,15 @@ document.addEventListener('DOMContentLoaded', async function () {
   
 });
 
+// Top navigaton (Content Hub) triggers
+	$('.br-nav-search__close, .br-nav-search__base').click(function(){
+  	$('.br-nav__search-btn').click();
+  });
+  $('.br-nav-menu__base').click(function(){
+  	$('.br-nav__menu-btn').click();
+  });
+
+/////   END BREEFING-ROOM    /////
 
 
 // todo: merge with utm to href script
