@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 // Top navigaton (Content Hub) triggers
-	$('.br-nav-search__close, .br-nav-search__base').click(function(){
-  	$('.br-nav__search-btn').click();
-  });
-  $('.br-nav-menu__base').click(function(){
-  	$('.br-nav__menu-btn').click();
-  });
+$('.br-nav-search__close, .br-nav-search__base').click(function(){
+  $('.br-nav__search-btn').click();
+});
+$('.br-nav-menu__base').click(function(){
+  $('.br-nav__menu-btn').click();
+});
 
 /////   END BREEFING-ROOM    /////
 
