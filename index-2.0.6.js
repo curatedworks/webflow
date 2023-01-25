@@ -25,11 +25,10 @@ document.addEventListener('DOMContentLoaded', async function () {
       }
     })
 
+    // Change Search Results
     const resultsElement = $('.form-search__wrap label');
     if (!resultsElement) return;
-
     const resultText = resultsElement.text().split(' ')
-
     resultsElement.text(+resultText[0] - removedItemsCount + ' ' + resultText[1])
   }
 
