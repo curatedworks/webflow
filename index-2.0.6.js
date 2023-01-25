@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
   
   $('.br-nav__brand').click(function() {
+    const userType = localStorage.getItem('clientType')
     if (userType === 'agency') {
       window.location.href='/agency-breefing-room';
     }
