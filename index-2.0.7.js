@@ -1,56 +1,93 @@
 /////   START BREEFING-ROOM    /////
 
-// Filter Brand articles for agencies and vice versa
+// Filter brand articles for agencies and vice versa
 document.addEventListener('DOMContentLoaded', async function () {
-  function doFilter(byFilterSelector) {
-    const userType = localStorage.getItem('clientType')
-    if (!userType || !$(byFilterSelector).length) {
+  function initSlider() {
+    const slickRow = $('.br-creatives__wrapper--desk .br-creatives__row')
+
+    if (!slickRow.length) {
       return;
     }
-    const cards = $('#filteredArticles .br-latest__col')
+    slickRow.slick({
+      dots: false,
+      speed: 600,
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      touchThreshold: 100,
+      adaptiveHeight: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            adaptiveHeight: true
+          }
+        }
+      ],
+      prevArrow: '.br-arrow--left',
+      nextArrow: '.br-arrow--right'
+    });
+  }
 
-    if (!cards.length) return;
+  function filterByClientType(cardsSelector, filterSelector, limit) {
+    const userType = localStorage.getItem('clientType')
 
-    let removedItemsCount = 0
+    if (!userType || !$(cardsSelector).length || !$(filterSelector).length) {
+      return;
+    }
 
-    cards.each(function (idx) {
-      const filterBlock = $(this).find(byFilterSelector)
+    $(cardsSelector).each(function () {
+      const filterBlock = $(this).find(filterSelector)
+
       if (userType === 'agency' && filterBlock.text().indexOf('(brand)') >= 0) {
-        $(this).hide()
-        removedItemsCount++
+        $(this).remove()
       }
       if (userType === 'brand' && filterBlock.text().indexOf('(agency)') >= 0) {
-        $(this).hide()
-        removedItemsCount++
+        $(this).remove()
+      }
+
+      if (filterSelector === '.br-card__h') {
+        filterBlock.text(function (i, old) {
+          return old.replace('(brand)', '').replace('(agency)', '').trim()
+        })
       }
     })
 
-    // Change Search Results
-    const resultsElement = $('.form-search__wrap label');
-    if (!resultsElement) return;
-    const resultText = resultsElement.text().split(' ')
-    resultsElement.text(+resultText[0] - removedItemsCount + ' ' + resultText[1])
+    if (limit && $(cardsSelector).length > limit) {
+      $(cardsSelector).slice(limit).remove()
+    }
+
   }
 
-  if ($('#filteredArticles').length > 0) {
-    try {
-      doFilter('.br-card__filter')
-      doFilter('.br-card__h')
-    } catch (error) {
+  function countSearchResults() {
+    if (!$('#search-list').length || !$('.form-search__count').length) {
+      return;
     }
+    const counter = $('.br-latest__col').length;
+    $('.form-search__count').text(counter)
+    const resultsElement = $('.form-search__wrap label').animate({ opacity: 1 }, 200);
   }
-  
-  $('.br-nav__brand').click(function() {
+
+  filterByClientType('#filteredArticles .br-latest__col', '.br-card__filter', null)
+  filterByClientType('#filteredMovies .br-creatives__col', '.br-card__filter', 6)
+  filterByClientType('#filteredMoviesMobile .br-creatives__col', '.br-card__filter', 6)
+  filterByClientType('#filteredSources .resources__col', '.br-card__filter', 4)
+  filterByClientType('#search-list .br-latest__col', '.br-card__h', null)
+
+  countSearchResults()
+  initSlider();
+
+  $('.br-nav__brand').click(function () {
     const userType = localStorage.getItem('clientType')
     if (userType === 'agency') {
-      window.location.href='/agency-breefing-room';
+      window.location.href = '/agency-breefing-room';
     }
     if (userType === 'brand') {
-      window.location.href='/breefing-room';
+      window.location.href = '/breefing-room';
     }
   });
-  
 });
+
 
 // Top navigaton (Content Hub) triggers
 $('.br-nav-search__close, .br-nav-search__base').click(function(){
