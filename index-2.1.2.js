@@ -28,10 +28,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       nextArrow: '.br-arrow--right'
     });
   }
-
-  // Sorting the list of articles by Date
-  $('.br-latest__sort-date').click();
-  
+ 
   
   function filterByClientType(cardsSelector, filterSelector, limit) {
     const userType = localStorage.getItem('clientType')
